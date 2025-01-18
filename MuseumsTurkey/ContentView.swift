@@ -23,7 +23,7 @@ struct ContentView: View {
                 SavedScreen()
                 
             }
-            .background(Color.red)
+            .background(Color.white)
             .tabItem {
                 Image(systemName: "bookmark")
                 Text("Kaydedilenler")
@@ -32,7 +32,7 @@ struct ContentView: View {
             VStack {
                 ProfileScreen()
             }
-            .background(Color.red)
+            .background(Color.white)
             .tabItem {
                 Image(systemName: "person.circle")
                 Text("Hesabım")
