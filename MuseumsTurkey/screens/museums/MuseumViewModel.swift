@@ -9,6 +9,9 @@ import Foundation
 
 class MuseumViewModel : ObservableObject {
     @Published var museums: [Museum] = []
+    init() {
+        
+    }
     
     
     func fetchMuseums() async throws {

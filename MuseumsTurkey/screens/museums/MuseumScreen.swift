@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MuseumScreen: View {
+    let viewModel: MuseumViewModel = .init()
     var body: some View {
         VStack {
             Text("Museum Screen")
