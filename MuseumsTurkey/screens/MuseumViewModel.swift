@@ -6,3 +6,25 @@
 //
 
 import Foundation
+
+class MuseumViewModel : ObservableObject {
+    @Published var museums: [Museum] = []
+    
+    
+    func fetchMuseums() async throws {
+       // todo : fetch museums
+    }
+    
+    
+}
+
+class Museum: Codable {
+    var name: String
+    var address: String
+    var phone: String
+    var website: String
+    var openingHours: String
+    var latitude: Double
+    var longitude: Double
+    
+}
