@@ -42,7 +42,7 @@ class MuseumsRemoteDataSource {
                 // JSON parse işlemi
                 let decodedResponse = try JSONDecoder().decode(MuseumResponse.self, from: data)
                 // Response'u UI modeliyle eşleştiriyoruz
-                let museums = decodedResponse.data.map({$0})
+                let museums = decodedResponse.data
                 completion(.success(museums))
             } catch {
                 completion(.failure(error))
