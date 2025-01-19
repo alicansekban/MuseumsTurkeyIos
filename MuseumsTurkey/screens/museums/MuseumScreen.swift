@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct MuseumScreen: View {
-    let viewModel: MuseumViewModel = .init()
+    let viewModel = MuseumViewModel()
     var body: some View {
-        VStack {
-            Text("Museum Screen")
-            .font(.headline)
-            .fontWeight(.bold)
+        ScrollView {
+            VStack(alignment: .leading) {
+                    ForEach(viewModel.museums, id: \.self) { museum in
+                    Text(museum.name)
+                }
+            
+            }
+        }
+        .task {
+    
+            viewModel.fetchMuseums(forCity: "istanbul")
         }
     }
+
 }
 
 #Preview {

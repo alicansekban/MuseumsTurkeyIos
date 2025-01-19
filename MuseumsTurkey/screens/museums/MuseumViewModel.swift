@@ -8,26 +8,24 @@
 import Foundation
 
 class MuseumViewModel : ObservableObject {
-    @Published var museums: [Museum] = []
-    init() {
-        
-    }
-    
-    
-    func fetchMuseums() async throws {
-       // todo : fetch museums
-    }
-    
-    
-}
+    @Published var museums: [MuseumData] = []
+    @Published var screenTitle: String = ""
+    private let dataSource = MuseumsRemoteDataSource()
 
-class Museum: Codable {
-    var name: String
-    var address: String
-    var phone: String
-    var website: String
-    var openingHours: String
-    var latitude: Double
-    var longitude: Double
+    init() {
+        screenTitle = "Müzeler"
+    }
     
+    func fetchMuseums(forCity city: String) {
+        dataSource.fetchMuseums(forCity: city) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let museums):
+                    self?.museums = museums
+                case .failure(let error):
+                    print("Error fetching museums: \(error)")
+                }
+            }
+        }
+    }
 }
