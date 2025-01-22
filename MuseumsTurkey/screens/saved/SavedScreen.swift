@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SavedScreen: View {
-    let viewModel: SavedViewModel = .init()
+    @StateObject var viewModel = SavedViewModel()
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }

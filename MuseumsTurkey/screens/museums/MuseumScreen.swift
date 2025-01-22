@@ -21,7 +21,7 @@ struct MuseumScreen: View {
                             museumName: museum.name, museumAddress: museum.address, museumPhoneNumber: museum.phone
                         )
                     }
-                
+
                 }
             }
             .onAppear {
@@ -37,14 +37,16 @@ struct MuseumItem : View {
     @State var museumAddress : String = ""
     @State var museumPhoneNumber : String = ""
 
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(museumName)
                 .bold()
             Text(museumAddress)
             Text(museumPhoneNumber)
-        }.padding(10)
+        }
+        .padding(10)
+    
        }
 }
 

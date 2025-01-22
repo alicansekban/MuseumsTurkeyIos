@@ -15,7 +15,7 @@ class MuseumViewModel : ObservableObject {
     init() {
         screenTitle = "Müzeler"
     }
-    
+
     func fetchMuseums(forCity city: String) {
         dataSource.fetchMuseums(forCity: city) { [weak self] result in
             DispatchQueue.main.async {

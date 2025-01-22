@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SavedViewModel {
+class SavedViewModel : ObservableObject {
     
 }

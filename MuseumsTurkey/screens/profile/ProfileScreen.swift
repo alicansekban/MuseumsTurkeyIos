@@ -8,12 +8,43 @@
 import SwiftUI
 
 struct ProfileScreen: View {
-    let viewModel: ProfileViewModel = .init()
+    @StateObject var  viewModel = ProfileViewModel()
+    var items : [Profile] = [
+        .init(name: "About Us", image: "person.crop.circle"),
+        .init(name: "Language", image :"globe")
+    ]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section {
+                    ForEach(items, id: \.self) { item in
+                        NavigationLink(value: item) {
+                            Label(item.name, systemImage: item.image)
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Profile")
+            .navigationDestination(for: Profile.self) { profile in
+                ZStack {
+                    Color.gray.opacity(0.2).ignoresSafeArea()
+                    Text(profile.name)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                }
+            }
+        }
+
     }
 }
 
 #Preview {
     ProfileScreen()
+}
+struct Profile: Hashable {
+    let id = UUID()
+    let name: String
+    let image: String
 }
